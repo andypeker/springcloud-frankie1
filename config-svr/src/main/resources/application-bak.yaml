@@ -1,0 +1,30 @@
+server:
+    port: 8500
+
+eureka:
+    client:
+        service-url:
+            #注册服务到eureka上，记住这里要加上eureka-server的用户名和密码
+            defaultZone: http://root:booszy@localhost:8761/eureka
+    instance:
+        prefer-ip-address: true
+        #可能比较长，复制的时候请写在一行
+        instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+        appname: springcloud-config-server
+spring:
+    application:
+        name: springcloud-config-server
+    cloud:
+        config:
+            server:
+                git:
+                    #这是其他项目配置文件的git仓库地址
+                    uri: https://git.coding.net/yirenyishi/springcloud-config-profile
+                    searchPaths: '{application}'
+security:
+    basic:
+        enabled: false
+user:
+    #这是config-server的用户名和密码
+    name: root
+    password: booszy

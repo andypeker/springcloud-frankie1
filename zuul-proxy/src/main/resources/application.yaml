@@ -1,0 +1,33 @@
+server:
+  port: 38080
+spring:
+  application:
+    name: springcloud-zuul
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: springcloud-config-server
+      fail-fast: true
+      username: root
+      password: password
+#      profile: dev
+eureka:
+  instance:
+    appname: springcloud-zuul
+    prefer-ip-address: true
+    #    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    hostname: localhost
+    port: 38011
+  client:
+    service-url:
+#      defaultZone: http://localhost:38011/eureka
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+zuul:
+  routes:
+    springcloud-ribbon-consumer: /ribbonconsumer/**
+#    springcloud-provider-hola: /hola/**
+    SPRINGCLOUD-PROVIDER-HOLA: /hola/**
+#    springcloud-provider-svc1: /hello1/**
+    SPRINGCLOUD-PROVIDER-HELLO1: /hello1/**
+    springcloud-provider-hello2: /hello2/**
