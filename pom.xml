@@ -30,45 +30,84 @@
     </properties>
 
     <modules>
-        <module>eureka-server</module>
-        <module>ribbon-consumer</module>
-        <module>provider1</module>
-        <module>provider2</module>
-        <module>provider3</module>
+        <module>eureka-server1</module>
+        <module>consumer-ribbon1</module>
+        <module>provider-hello1</module>
+        <module>provider-hello2</module>
+        <module>provider-hello3</module>
 
-        <module>ribbon-consumer2</module>
-        <module>hola-svc1</module>
-        <module>hola-svc2</module>
-        <module>hola-svc3</module>
-        <module>hola-svc4</module>
-        <module>hola-svc5</module>
+        <module>consumer-ribbon2a</module>
+        <module>consumer-ribbon2b</module>
+        <module>provider-hola1</module>
+        <module>provider-hola2</module>
+        <module>provider-hola3</module>
+        <module>provider-hola4</module>
+        <module>provider-hola5</module>
 
         <module>RestTemplate</module>
         <!--<module>RestTemplate/commons</module>-->
         <!--<module>RestTemplate/consumer</module>-->
         <!--<module>RestTemplate/subprovider</module>-->
 
-        <module>config-svr</module>
-        <module>zuul-proxy</module>
+        <module>config-svr1</module>
+        <module>config-svr2</module>
+        <module>zuul-gateway</module>
+        <module>consumer-feign1</module>
+        <module>consumer-feign2</module>
+
+        <module>provider-multiple1</module>
+        <module>provider-multiple2</module>
+        <module>consumer-feign3</module>
+
+        <module>eureka-server2</module>
+        <module>eureka-server3</module>
+
+        <module>zipkin-server1</module>
+        <module>zipkin-server2</module>
+
+        <module>consumer-ribbon3</module>
+        <module>provider-book</module>
 
     </modules>
 
     <dependencies>
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
-        </dependency>-->
+        </dependency>
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+            <version>2.1.1.RELEASE</version>
         </dependency>
 
     </dependencies>

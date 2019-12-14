@@ -1,0 +1,6 @@
+global:
+  eureka-ip: 10.19.139.102
+  eureka-port: 38051
+spring:
+  application:
+    name: springcloud-config-server

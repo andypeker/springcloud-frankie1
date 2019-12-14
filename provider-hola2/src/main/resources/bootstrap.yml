@@ -1,0 +1,21 @@
+global:
+  eureka-ip: 10.19.139.102
+  eureka-port: 38051
+spring:
+  application:
+    name: springcloud-provider-hola
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: springcloud-config-server
+      name: config
+      profile: frank
+      label: master
+      username: root
+      password: password
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${global.eureka-ip}:${global.eureka-port}/eureka
+preflag: "[Frankie Yang]"

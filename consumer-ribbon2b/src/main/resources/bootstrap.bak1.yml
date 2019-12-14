@@ -1,0 +1,14 @@
+spring:
+#  application:
+#    name: configclient
+  cloud:
+    config:
+#      discovery:
+#        enabled: true
+#        service-id: springcloud-config-server
+      name: config
+      profile: prod
+      label: master
+      uri: http://10.19.139.102:38060 #配置中心地址
+      username: root
+      password: password

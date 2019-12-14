@@ -1,0 +1,8 @@
+global:
+  eureka-ip: 192.168.1.108
+  eureka-port: 38051
+  eureka-peer2: 38052
+  eureka-peer3: 38053
+spring:
+  application:
+    name: springcloud-eureka-server

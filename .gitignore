@@ -1,4 +1,10 @@
 /.idea/
 /.idea/libraries/
-/config-svr/target/
+/config-svr1/target/
+/config-svr2/target/
 /eureka-server/target/
+/provider-hola2/target/
+/consumer-feign1/target/
+/consumer-feign2/target/
+/provider-multiple1/target/
+/provider-multiple2/target/

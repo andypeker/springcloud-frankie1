@@ -1,0 +1,41 @@
+global:
+  eureka-ip: 10.19.139.102
+  eureka-port: 38051
+server:
+  ip: 0.0.0.0
+  port: 38060
+spring:
+  application:
+    name: springcloud-config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:properties/
+    client:
+      ipAddress: ${server.ip}
+eureka:
+  instance:
+    appname: springcloud-config-server
+    hostname: ${global.eureka-ip}
+    port: ${global.eureka-port}
+    prefer-ip-address: true
+    #可能比较长，复制的时候请写在一行
+#    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+#    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    service-url:
+      #注册服务到eureka上，记住这里要加上eureka-server的用户名和密码
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+security:
+  basic:
+    enabled: true
+  user:
+    #这是config-server的用户名和密码
+    name: root
+    password: password
+
+# spring.application.name 优先级 高于 eureka.instance.appname

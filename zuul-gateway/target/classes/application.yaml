@@ -1,0 +1,56 @@
+#global:
+#  eureka-ip: 192.168.1.108
+#  eureka-port: 38051
+server:
+  ip: 0.0.0.0
+  port: 38080
+spring:
+#  application:
+#    name: springcloud-zuul-gateway
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: springcloud-config-server
+      fail-fast: true
+      username: root
+      password: password
+#      profile: dev
+    client:
+      ipAddress: ${server.ip}
+  zipkin:
+    enabled: true
+    baseUrl: http://${global.zipkin-ip}:${global.zipkin-port}
+    locater:
+      discovery:
+        enabled: false
+  sleuth:
+    sample:
+      percentage: 1
+    enabled: true
+eureka:
+  instance:
+    appname: springcloud-zuul-gateway
+    prefer-ip-address: false
+    #    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    hostname: ${global.eureka-ip}
+    port: ${global.eureka-port}
+#    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    instance-id: ${spring.application.name}:${server.port}
+#  client:
+#    service-url:
+##      defaultZone: http://localhost:38051/eureka
+#      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+zuul:
+  routes:
+    springcloud-consumer-ribbon1: /ribbon1/**
+    springcloud-consumer-ribbon2: /ribbon2/**
+    springcloud-consumer-feign: /feign/**
+#    springcloud-provider-hola: /hola/**
+    SPRINGCLOUD-PROVIDER-HOLA: /hola/**
+#    springcloud-provider-svc1: /hello1/**
+    SPRINGCLOUD-PROVIDER-HELLO: /hello/**
+#    springcloud-provider-hello2: /hello2/**
+    SPRINGCLOUD-PROVIDER-MULTIPLE:
+      path: /multiple/**
+      serviceId: SPRINGCLOUD-PROVIDER-MULTIPLE
